@@ -2,6 +2,6 @@ require 'sinatra/base'
 
 class UrlShort < Sinatra::Base
   get '/' do
-    'Hello UrlShort!'
+    haml :index
   end
 end
