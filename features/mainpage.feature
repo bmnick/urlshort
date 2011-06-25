@@ -7,4 +7,4 @@ Feature: Mainpage
 		When I go to the home page
 		Then I should see "URL"
 		And I should see "Slug"
-		And I should see "Make the Link!"
+		And I should see a button named "Make the Link!"

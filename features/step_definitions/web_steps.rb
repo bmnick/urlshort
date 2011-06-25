@@ -104,6 +104,16 @@ Then /^(?:|I )should see JSON:$/ do |expected_json|
   expected.should == actual
 end
 
+Then /^(?:|I )should see a button named "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|
+	with_scope(selector) do
+		if page.respond_to? :should
+			find_button(text).should_not be_nil
+		else
+			assert find_button(text)
+		end
+	end
+end
+
 Then /^(?:|I )should see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|
   with_scope(selector) do
     if page.respond_to? :should
