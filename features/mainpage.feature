@@ -28,3 +28,10 @@ Feature: Mainpage
 	Scenario: Ungenerated slugs should fail gracefully
 		When I go to asdf slug
 		Then I should see "Sorry, this link doesn't exist"
+	
+	Scenario: The user shouldn't have to provide a slug
+		Given I am on the home page
+		When I fill in the following:
+			| url | http://www.bmnick.com |
+		And I press "Make the Link!"
+		Then I should see "Your link is: "
