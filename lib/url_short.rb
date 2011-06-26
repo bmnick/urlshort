@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require File.expand_path(File.join(File.dirname(__FILE__), "url_store"))
 
 class UrlShort < Sinatra::Base
 	@@baseurl = 'http://urlshort.dev'
@@ -12,7 +13,12 @@ class UrlShort < Sinatra::Base
 		haml :results
 	end
 
+	get '/:slug' do |slug|
+		redirect UrlStore.instance.get_mapping( slug )
+	end
+
 	post '/' do
+		UrlStore.instance.add_mapping params[:slug], params[:url]
 		redirect "/results/#{params[:slug]}"
 	end
 end
