@@ -35,3 +35,10 @@ Feature: Mainpage
 			| url | http://www.bmnick.com |
 		And I press "Make the Link!"
 		Then I should see "Your link is: "
+
+	Scenario: Bad URLs should give an invalid warning
+		Given I am on the home page
+		When I fill in the following:
+			| url | poopie |
+		And I press "Make the Link!"
+		Then I should see "The URL you provided is invalid, please try again"

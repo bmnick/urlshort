@@ -10,11 +10,30 @@ class UrlStore
 		if slug.length == 0
 			slug = Digest::CRC16.hexdigest(address)
 		end
-		@redis.set slug, address
+
+		if validate(address)
+			@redis.set slug, address
+		else
+			slug = nil
+		end
+
 		slug
 	end
 
 	def get_mapping slug
 		@redis.get slug
 	end
+
+	def validate url
+		begin
+			uri = URI.parse(url)
+			if uri.class != URI::HTTP
+				return false
+			end
+		rescue URI::InvalidURIError
+			return false
+		end
+		true
+	end
+	
 end

@@ -36,6 +36,10 @@ class UrlShort < Sinatra::Base
 
 	post '/' do
 		slug = STORE.add_mapping params[:slug], params[:url]
-		redirect "/results/#{slug}"
+		if slug
+			redirect "/results/#{slug}"
+		else
+			haml :invalid
+		end
 	end
 end
