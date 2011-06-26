@@ -6,16 +6,27 @@ require 'haml'
 require File.expand_path(File.join(File.dirname(__FILE__), "url_store"))
 
 class UrlShort < Sinatra::Base
-	STORE = UrlStore.new
-	@@baseurl = 'http://urlshort.dev'
-	set :haml, :format => :html5
+	configure do
+		set :haml, :format => :html5
+
+		uri = URI.parse(ENV["REDISTOGO_URL"])
+		STORE = UrlStore.new(uri.host, uri.port, uri.password)
+	end
+
+	configure :production do
+		BASEURL = 'http://bmnic.us'
+	end
+
+	configure :test, :development do
+		BASEURL = 'http://urshort.dev'
+	end
 
   get '/' do
     haml :index
   end
 
 	get '/results/:slug' do |slug|
-		@link = @@baseurl + '/' + slug
+		@link = BASEURL + '/' + slug
 		haml :results
 	end
 

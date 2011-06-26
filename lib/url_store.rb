@@ -2,8 +2,8 @@ require 'digest/crc16'
 require 'redis'
 
 class UrlStore
-	def initialize
-		@redis = Redis.new
+	def initialize(host, port, password)
+		@redis = Redis.new(:host => host, :port => port, :password => password)
 	end
 
 	def add_mapping slug, address
