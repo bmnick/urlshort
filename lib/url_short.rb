@@ -14,7 +14,7 @@ class UrlShort < Sinatra::Base
 	end
 
 	get '/:slug' do |slug|
-		redirect UrlStore.instance.get_mapping( slug )
+		redirect UrlStore.instance.get_mapping( slug ), 301
 	end
 
 	post '/' do

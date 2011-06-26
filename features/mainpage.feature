@@ -23,4 +23,4 @@ Feature: Mainpage
 		Given I have a short link from "aapl" to "http://www.apple.com"
 		And I am on the results page for aapl
 		When I follow "Your short link"
-		Then I should be on http://www.apple.com
+		Then I should be at http://www.apple.com

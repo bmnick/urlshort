@@ -20,7 +20,12 @@ module NavigationHelpers
 			"/#{$1}"
 
 		when /(http:.*)/
-			$1
+			url = $1
+			if url.end_with? '/'
+				url
+			else
+				url + '/'
+			end
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

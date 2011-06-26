@@ -4,7 +4,6 @@ class UrlStore
 	end
 
 	def initialize
-		puts "hello"
 		@mappings = Hash.new
 	end
 
