@@ -9,16 +9,11 @@ class UrlShort < Sinatra::Base
 	configure do
 		set :haml, :format => :html5
 
-		uri = URI.parse(ENV["REDISTOGO_URL"])
+		url = ENV["REDISTOGO_URL"]
+		url ||= 'redis://localhost:6379'
+		uri = URI.parse(url)
+
 		STORE = UrlStore.new(uri.host, uri.port, uri.password)
-	end
-
-	configure :production do
-		BASEURL = 'http://bmnic.us'
-	end
-
-	configure :test, :development do
-		BASEURL = 'http://urshort.dev'
 	end
 
   get '/' do
@@ -26,7 +21,7 @@ class UrlShort < Sinatra::Base
   end
 
 	get '/results/:slug' do |slug|
-		@link = BASEURL + '/' + slug
+		@link = url("/#{slug}")
 		haml :results
 	end
 
