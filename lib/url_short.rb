@@ -1,9 +1,14 @@
+require "rubygems"
+require "bundler/setup"
+
 require 'sinatra/base'
+require 'haml'
 require File.expand_path(File.join(File.dirname(__FILE__), "url_store"))
 
 class UrlShort < Sinatra::Base
-	@@baseurl = 'http://urlshort.dev'
 	STORE = UrlStore.new
+	@@baseurl = 'http://urlshort.dev'
+	set :haml, :format => :html5
 
   get '/' do
     haml :index
