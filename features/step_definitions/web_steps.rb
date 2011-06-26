@@ -20,6 +20,13 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^(?:|I )have a short link from "([^"]*)" to "([^"]*)"$/ do |slug, address|
+	visit path_to("the home page")
+	fill_in('slug', :with => slug)
+	fill_in('url', :with => address)
+	click_button('Make the Link!')
+end
+
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -110,6 +117,16 @@ Then /^(?:|I )should see a button named "([^\"]*)"(?: within "([^\"]*)")?$/ do |
 			find_button(text).should_not be_nil
 		else
 			assert find_button(text)
+		end
+	end
+end
+
+Then /^(?:|I )should see a short link for the "([^\"]*)"(?: within "([^\"]*)")?$/ do |slug, selector|
+	with_scope(selector) do
+		if page.respond_to? :should
+			page.should have_content(path_to(slug))
+		else
+			assert page.has_content?(path_to(slug))
 		end
 	end
 end

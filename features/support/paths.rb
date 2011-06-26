@@ -16,6 +16,9 @@ module NavigationHelpers
 		when /the results page for (.*)/
 			"/results/#{$1}"
 
+		when /(.*) slug/
+			"/#{$1}"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

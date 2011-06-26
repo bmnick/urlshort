@@ -17,3 +17,4 @@ Feature: Mainpage
 		And I press "Make the Link!"
 		Then I should be on the results page for aapl
 		And I should see "Your link is: "
+		And I should see a short link for the "aapl slug"
