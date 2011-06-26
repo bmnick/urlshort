@@ -1,8 +1,4 @@
 class UrlStore
-	def self.instance
-		@@instance ||= UrlStore.new
-	end
-
 	def initialize
 		@mappings = Hash.new
 	end
