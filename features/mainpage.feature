@@ -18,3 +18,9 @@ Feature: Mainpage
 		Then I should be on the results page for aapl
 		And I should see "Your link is: "
 		And I should see a short link for the "aapl slug"
+
+	Scenario: Links should go to their given link
+		Given I have a short link from "aapl" to "http://www.apple.com"
+		And I am on the results page for aapl
+		When I follow link titled "Your short link"
+		Then I should be on http://www.apple.com
