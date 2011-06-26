@@ -18,6 +18,7 @@ GEM
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
     diff-lcs (1.1.2)
+    digest-crc (0.2.0)
     ffi (1.0.9)
     gherkin (2.4.1)
       json (>= 1.4.6)
@@ -59,6 +60,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   cucumber
+  digest-crc (~> 0.2.0)
   haml
   rack-test
   rspec
