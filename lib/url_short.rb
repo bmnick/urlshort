@@ -20,7 +20,12 @@ class UrlShort < Sinatra::Base
 	end
 
 	get '/:slug' do |slug|
-		redirect STORE.get_mapping( slug ), 301
+		redirect_path = STORE.get_mapping slug
+		if redirect_path
+			redirect redirect_path, 301
+		else
+			haml :notfound
+		end
 	end
 
 	post '/' do

@@ -24,3 +24,7 @@ Feature: Mainpage
 		And I am on the results page for aapl
 		When I follow "Your short link"
 		Then I should be at http://www.apple.com
+
+	Scenario: Ungenerated slugs should fail gracefully
+		When I go to asdf slug
+		Then I should see "Sorry, this link doesn't exist"
