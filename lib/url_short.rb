@@ -29,7 +29,7 @@ class UrlShort < Sinatra::Base
 	end
 
 	post '/' do
-		STORE.add_mapping params[:slug], params[:url]
-		redirect "/results/#{params[:slug]}"
+		slug = STORE.add_mapping params[:slug], params[:url]
+		redirect "/results/#{slug}"
 	end
 end
