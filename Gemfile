@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'haml'
 gem "digest-crc", "~> 0.2.0"
 gem "redis", "~> 2.2.1"
+gem 'sass'
 
 group 'test' do
 	gem 'cucumber'
