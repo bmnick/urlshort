@@ -3,6 +3,7 @@ require "bundler/setup"
 
 require 'sinatra/base'
 require 'haml'
+require 'sass'
 require File.expand_path(File.join(File.dirname(__FILE__), "url_store"))
 
 class UrlShort < Sinatra::Base
@@ -19,6 +20,10 @@ class UrlShort < Sinatra::Base
   get '/' do
     haml :index
   end
+
+	get '/style.css' do
+		sass :style
+	end
 
 	get '/results/:slug' do |slug|
 		@link = url("/#{slug}")
