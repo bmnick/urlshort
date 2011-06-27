@@ -1,3 +1,5 @@
 .rvmrc
 
 tmp/restart.txt
+
+.sass-cache
