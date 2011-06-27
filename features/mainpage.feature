@@ -5,8 +5,8 @@ Feature: Mainpage
 
 	Scenario: Load the main page
 		When I go to the home page
-		Then I should see "URL"
-		And I should see "Slug"
+		Then I should see an input named "url"
+		And I should see an input named "slug"
 		And I should see a button named "Make the Link!"
 
 	Scenario: Submit a link

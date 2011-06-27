@@ -131,6 +131,16 @@ Then /^(?:|I )should see a short link for the "([^\"]*)"(?: within "([^\"]*)")?$
 	end
 end
 
+Then /^(?:|I )should see an input named "([^\"]*)"(?: within "([^\"]*)")?$/ do |name, selector|
+	with_scope(selector) do
+		if page.respond_to? :should
+			page.should have_selector(:xpath, "//input[@name='#{name}']")
+		else
+			assert page.has_selector?(:xpath, "//input[@name='#{name}']")
+		end
+	end
+end
+
 Then /^(?:|I )should see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|
   with_scope(selector) do
     if page.respond_to? :should

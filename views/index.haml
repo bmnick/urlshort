@@ -1,10 +1,9 @@
 %h1 Give us a URL and we'll throw a short one back at you!
-%form{ :action => "/", :method => "post"}
-  .input
-    %label{:for => "url"} URL:
-    %input{:type => "text", :name => "url", :class => "text"}
-  .input
-    %label{:for => "slug"} Slug:
-    %input{:type => "text", :name => "slug", :class => "text"}
-  .input
-    %input{:type => "submit", :value => "Make the Link!", :class => "button"}
+#userinput
+  %form{ :action => "/", :method => "post"}
+    .input
+      %input{:title => "URL", :type => "text", :name => "url", :class => "text", :placeholder => "URL"}
+    .input
+      %input{:title => "Slug", :type => "text", :name => "slug", :class => "text", :placeholder => "Link Name (optional)"}
+    .input
+      %input{:type => "submit", :value => "Make the Link!", :class => "button"}
