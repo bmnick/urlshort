@@ -27,7 +27,7 @@ class UrlStore
 	def validate url
 		begin
 			uri = URI.parse(url)
-			if uri.class != URI::HTTP
+			if (uri.class != URI::HTTP && uri.class != URI::HTTPS)
 				return false
 			end
 		rescue URI::InvalidURIError
